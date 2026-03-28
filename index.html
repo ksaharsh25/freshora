@@ -3,87 +3,502 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Freshora - Dairy & Essentials</title>
+  <title>Freshora – Fresh Dairy & Daily Essentials Delivered</title>
+  <meta name="description" content="Freshora delivers farm-fresh dairy and daily essentials – Bread, Milk, Butter, Cheese, and Coconut Water – straight to your doorstep.">
+  <meta name="keywords" content="fresh dairy, milk delivery, bread, butter, cheese, coconut water, Freshora, daily essentials, Jaipur grocery">
+  <meta name="author" content="Freshora">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1a6b3c">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Freshora – Fresh Dairy & Daily Essentials Delivered">
+  <meta property="og:description" content="Farm-fresh dairy and daily essentials delivered to your doorstep.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Freshora – Fresh Dairy & Daily Essentials">
+  <link rel="canonical" href="https://freshora.in/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: Arial, sans-serif; margin:0; }
-    header { background:#16a34a; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
-    header h1 { margin:0; }
-    nav a { color:white; margin-left:20px; text-decoration:none; }
-    .hero { text-align:center; padding:60px 20px; background:#f0fdf4; }
-    .hero h2 { font-size:36px; }
-    .products { padding:40px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
-    .card { border:1px solid #ddd; border-radius:12px; padding:15px; text-align:center; }
-    .card img { width:100%; height:150px; object-fit:cover; border-radius:10px; }
-    .price { color:#16a34a; font-weight:bold; }
-    footer { background:#16a34a; color:white; text-align:center; padding:15px; margin-top:30px; }
+    :root {
+      --green: #1e7e45;
+      --green-mid: #27a058;
+      --green-pale: #f3faf6;
+      --cream: #fefaf3;
+      --amber: #f0a500;
+      --white: #fff;
+      --text: #1c2e22;
+      --text-mid: #3d5c47;
+      --text-muted: #7a9e85;
+      --shadow: 0 8px 32px rgba(30,126,69,0.14);
+      --shadow-sm: 0 2px 14px rgba(30,126,69,0.09);
+      --r: 20px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(254,250,243,0.95);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(30,126,69,0.1);
+      padding: 0 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-box {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 19px;
+    }
+    .logo-name { font-family: 'Playfair Display', serif; font-size: 1.55rem; color: var(--green); }
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a { font-size: 0.9rem; font-weight: 700; color: var(--text-mid); text-decoration: none; transition: color .2s; }
+    nav a:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green); color: var(--white) !important;
+      padding: 9px 22px; border-radius: 50px;
+      box-shadow: 0 4px 14px rgba(30,126,69,0.3);
+      transition: background .2s, transform .15s !important;
+    }
+    .nav-cta:hover { background: var(--green-mid) !important; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 50px;
+      padding: 80px 60px 90px;
+      background: var(--green-pale);
+      min-height: 88vh; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; border-radius: 50%;
+      width: 400px; height: 400px;
+      background: rgba(30,126,69,0.055);
+      top: -120px; right: 28%;
+      pointer-events: none;
+    }
+    .pill-dot {
+      display: inline-block;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 3px rgba(74,222,128,0.3);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100%{ box-shadow: 0 0 0 3px rgba(74,222,128,0.3); }
+      50%{ box-shadow: 0 0 0 7px rgba(74,222,128,0.08); }
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(30,126,69,0.1); border: 1px solid rgba(30,126,69,0.2);
+      color: var(--green); padding: 6px 16px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: italic; color: var(--green); }
+    .hero > div > p {
+      font-size: 1.05rem; color: var(--text-muted);
+      line-height: 1.8; margin-bottom: 40px; max-width: 460px;
+    }
+    .hero-stats {
+      display: flex; gap: 36px;
+      padding-top: 30px; border-top: 1px solid rgba(30,126,69,0.13);
+    }
+    .stat-n { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--green); }
+    .stat-l { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; margin-top: 1px; }
+
+    /* Hero mosaic */
+    .hero-visual { position: relative; height: 490px; }
+    .hv-card {
+      position: absolute; border-radius: 22px;
+      background: var(--white); box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hv-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hv-main  { width: 62%; height: 66%; top: 0; right: 0; border-radius: 28px; }
+    .hv-sm1   { width: 37%; height: 42%; bottom: 2%; left: 0; }
+    .hv-sm2   { width: 35%; height: 43%; top: 40%; right: 2%; border-radius: 14px; transform: rotate(2deg); }
+    .float-tag {
+      position: absolute; background: var(--white); border-radius: 14px;
+      padding: 10px 16px; box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; font-weight: 800; color: var(--text); z-index: 10;
+      white-space: nowrap;
+    }
+    .ft1 { top: 11%; left: -6%; }
+    .ft2 { bottom: 13%; right: -5%; }
+
+    /* ── FEATURES ── */
+    .features { padding: 60px; background: var(--white); }
+    .feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .feat-card {
+      background: var(--green-pale); border-radius: 20px;
+      padding: 28px; border: 1px solid rgba(30,126,69,0.08);
+      transition: transform .22s, box-shadow .22s;
+    }
+    .feat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .feat-icon { font-size: 2rem; margin-bottom: 12px; }
+    .feat-title { font-weight: 800; font-size: 1rem; margin-bottom: 7px; }
+    .feat-desc { font-size: 0.86rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── PRODUCTS ── */
+    .products { padding: 80px 60px; background: var(--cream); }
+    .sec-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--green-mid); margin-bottom: 10px;
+    }
+    .sec-label::before { content:''; width:18px; height:2px; background:var(--green-mid); border-radius:2px; }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      letter-spacing: -0.02em; margin-bottom: 8px;
+    }
+    .sec-sub { color: var(--text-muted); font-size: 0.97rem; margin-bottom: 44px; }
+
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px; }
+
+    .p-card {
+      background: var(--white); border-radius: 24px;
+      box-shadow: var(--shadow-sm); overflow: hidden;
+      transition: transform .25s, box-shadow .25s; position: relative;
+      cursor: pointer;
+    }
+    .p-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+
+    .p-img {
+      height: 200px; position: relative; overflow: hidden;
+      background: #f5f5f5;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p-img img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      padding: 12px;
+      transition: transform .4s ease;
+    }
+    .p-card:hover .p-img img { transform: scale(1.07); }
+
+    .p-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--amber); color: var(--white);
+      font-size: 0.68rem; font-weight: 800;
+      padding: 5px 11px; border-radius: 50px;
+      letter-spacing: 0.04em; z-index: 2;
+      box-shadow: 0 2px 8px rgba(240,165,0,0.35);
+    }
+    .p-badge.green { background: var(--green); box-shadow: 0 2px 8px rgba(30,126,69,0.35); }
+
+    .p-info { padding: 16px 18px 20px; }
+    .p-name { font-weight: 800; font-size: 0.97rem; margin-bottom: 4px; }
+    .p-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
+    .p-foot { display: flex; align-items: flex-end; justify-content: space-between; }
+    .p-price { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--green); }
+    .p-unit { font-size: 0.72rem; color: var(--text-muted); font-family: 'Nunito', sans-serif; font-weight: 600; }
+    .p-stars { font-size: 0.8rem; color: var(--amber); margin-top: 3px; letter-spacing: 1px; }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 90px 60px; background: var(--green);
+      position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content:''; position: absolute;
+      width: 520px; height: 520px; border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      top: -220px; right: -80px;
+    }
+    #contact::after {
+      content:''; position: absolute;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      bottom: -110px; left: -70px;
+    }
+    .contact-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center; position: relative; z-index: 1;
+    }
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; color: var(--white); margin-bottom: 14px; letter-spacing: -0.02em;
+    }
+    .contact-sub { color: rgba(255,255,255,0.62); font-size: 0.97rem; line-height: 1.8; }
+    .c-items { display: flex; flex-direction: column; gap: 16px; }
+    .c-item {
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 16px; padding: 17px 22px;
+      transition: background .2s;
+    }
+    .c-item:hover { background: rgba(255,255,255,0.15); }
+    .c-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .c-label { font-size: 0.72rem; color: rgba(255,255,255,0.5); font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+    .c-val { color: var(--white); font-weight: 700; font-size: 0.97rem; margin-top: 3px; }
+    .c-val a { color: var(--white); text-decoration: none; }
+    .c-val a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d3c21; color: rgba(255,255,255,0.5);
+      padding: 26px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.84rem;
+    }
+    .foot-brand { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.1rem; }
+    .foot-links { display: flex; gap: 22px; }
+    .foot-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color .2s; }
+    .foot-links a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .hero-content > * { animation: fadeUp .65s ease both; }
+    .hero-content > *:nth-child(1){animation-delay:.08s}
+    .hero-content > *:nth-child(2){animation-delay:.18s}
+    .hero-content > *:nth-child(3){animation-delay:.28s}
+    .hero-content > *:nth-child(4){animation-delay:.42s}
+    .hero-visual { animation: fadeUp .8s .2s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .hero { grid-template-columns: 1fr; padding: 40px 24px 50px; min-height: auto; gap: 40px; }
+      .hero-visual { height: 310px; }
+      .hv-sm2, .ft1 { display: none; }
+      .features { padding: 40px 24px; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .products { padding: 50px 24px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 30px; }
+      #contact { padding: 50px 24px; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 22px; }
+    }
   </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
-  <h1>🌿 Freshora</h1>
+  <a href="#" class="logo">
+    <div class="logo-box">🌿</div>
+    <span class="logo-name">Freshora</span>
+  </a>
   <nav>
     <a href="#products">Products</a>
     <a href="#contact">Contact</a>
+    <a href="mailto:saharsh2508@gmail.com" class="nav-cta">Get in Touch</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <h2>Fresh Daily Essentials Delivered</h2>
-  <p>Bread • Milk • Butter • Cheese • Coconut Water</p>
+  <div class="hero-content">
+    <div class="hero-pill"><span class="pill-dot"></span> Delivered Fresh Every Day</div>
+    <h1>Pure Dairy &amp; <em>Daily Essentials</em> at Your Door</h1>
+    <p>Farm-fresh milk, artisan bread, creamy butter, cheese, and refreshing coconut water — delivered straight to your home, every single day.</p>
+    <div class="hero-stats">
+      <div><div class="stat-n">500+</div><div class="stat-l">Happy Homes</div></div>
+      <div><div class="stat-n">5</div><div class="stat-l">Fresh Products</div></div>
+      <div><div class="stat-n">100%</div><div class="stat-l">Natural Quality</div></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hv-card hv-main">
+      <img src="https://www.jiomart.com/images/product/original/493840662/kanha-premium-bread-sandwich-700-g-product-images-o493840662-p611680523-0-202506182243.jpg?im=Resize=(420,420)"
+           alt="Kanha Sandwich Bread" style="object-fit:contain; background:#fdf3dc;">
+    </div>
+    <div class="hv-card hv-sm1">
+      <img src="https://www.jiomart.com/images/product/original/590000472/saras-toned-milk-500-ml-product-images-o590000472-p610099182-0-202410151544.jpg?im=Resize=(1000,1000)"
+           alt="Saras Toned Milk" style="object-fit:contain; background:#e8f4fd;">
+    </div>
+    <div class="hv-card hv-sm2">
+      <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/ciw/2025/12/17/0df385da-706d-4c59-af5b-4502556156c6_PSLTUXPOU9_MN_16122025.png"
+           alt="Amul Cheese Slices" style="object-fit:contain; background:#fff9e0;">
+    </div>
+    <div class="float-tag ft1"><span class="pill-dot"></span> Delivered by 9 AM</div>
+    <div class="float-tag ft2">🌿 100% Natural</div>
+  </div>
 </section>
 
+<!-- FEATURES -->
+<section class="features">
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🚚</div>
+      <div class="feat-title">Morning Doorstep Delivery</div>
+      <div class="feat-desc">Your essentials arrive fresh every morning so your day always starts right.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🧪</div>
+      <div class="feat-title">Quality Assured</div>
+      <div class="feat-desc">Sourced from trusted farms and brands, tested for freshness and purity before every delivery.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">♻️</div>
+      <div class="feat-title">Eco-Friendly Packaging</div>
+      <div class="feat-desc">Minimal, recyclable packaging — good for your home and great for the planet.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
 <section id="products" class="products">
-  <h2 style="text-align:center;">Our Products</h2>
-  <div class="grid">
+  <div class="sec-label">Our Products</div>
+  <h2 class="sec-title">Fresh Picks of the Day</h2>
+  <p class="sec-sub">Handpicked quality essentials for your family, sourced fresh daily.</p>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=600" alt="Bread">
-      <h3>Kanha White Bread</h3>
-      <p>Soft & fresh daily bread</p>
-      <p class="price">₹44</p>
+  <div class="products-grid">
+
+    <!-- BREAD -->
+    <div class="p-card">
+      <div class="p-img" style="background:#fdf3dc;">
+        <span class="p-badge">🔥 Bestseller</span>
+        <img src="https://www.jiomart.com/images/product/original/493840662/kanha-premium-bread-sandwich-700-g-product-images-o493840662-p611680523-0-202506182243.jpg?im=Resize=(420,420)"
+             alt="Kanha Premium Sandwich Bread 700g">
+      </div>
+      <div class="p-info">
+        <div class="p-name">Kanha Sandwich Bread</div>
+        <div class="p-desc">Soft premium sandwich loaf, baked fresh daily</div>
+        <div class="p-foot">
+          <div>
+            <div class="p-price">₹44 <span class="p-unit">/700g</span></div>
+            <div class="p-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?q=80&w=600" alt="Milk">
-      <h3>Saras Milk</h3>
-      <p>Fresh toned milk</p>
-      <p class="price">₹32</p>
+    <!-- MILK -->
+    <div class="p-card">
+      <div class="p-img" style="background:#e8f4fd;">
+        <span class="p-badge green">⚡ Daily Fresh</span>
+        <img src="https://www.jiomart.com/images/product/original/590000472/saras-toned-milk-500-ml-product-images-o590000472-p610099182-0-202410151544.jpg?im=Resize=(1000,1000)"
+             alt="Saras Toned Milk 500ml">
+      </div>
+      <div class="p-info">
+        <div class="p-name">Saras Toned Milk</div>
+        <div class="p-desc">Farm-fresh pasteurised toned milk</div>
+        <div class="p-foot">
+          <div>
+            <div class="p-price">₹32 <span class="p-unit">/500ml</span></div>
+            <div class="p-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1589985270958-3493f4c1b63d?q=80&w=600" alt="Butter">
-      <h3>Amul Butter</h3>
-      <p>Rich creamy butter</p>
-      <p class="price">₹58</p>
+    <!-- BUTTER -->
+    <div class="p-card">
+      <div class="p-img" style="background:#fffce0;">
+        <img src="https://m.media-amazon.com/images/I/717GgfVk6YL._AC_UF894,1000_QL80_.jpg"
+             alt="Amul Butter 100g">
+      </div>
+      <div class="p-info">
+        <div class="p-name">Amul Butter</div>
+        <div class="p-desc">Rich, creamy & perfectly salted</div>
+        <div class="p-foot">
+          <div>
+            <div class="p-price">₹58 <span class="p-unit">/100g</span></div>
+            <div class="p-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1552767059-ce182ead6c1b?q=80&w=600" alt="Cheese">
-      <h3>Amul Cheese</h3>
-      <p>Delicious cheese slices</p>
-      <p class="price">₹110</p>
+    <!-- CHEESE -->
+    <div class="p-card">
+      <div class="p-img" style="background:#fff9e0;">
+        <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/ciw/2025/12/17/0df385da-706d-4c59-af5b-4502556156c6_PSLTUXPOU9_MN_16122025.png"
+             alt="Amul Cheese Slices 200g">
+      </div>
+      <div class="p-info">
+        <div class="p-name">Amul Cheese Slices</div>
+        <div class="p-desc">Perfectly melty processed cheese slices</div>
+        <div class="p-foot">
+          <div>
+            <div class="p-price">₹110 <span class="p-unit">/200g</span></div>
+            <div class="p-stars">★★★★☆</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1591287083773-9d6f2c82c3d7?q=80&w=600" alt="Coconut Water">
-      <h3>Tender Coconut Water</h3>
-      <p>Natural & refreshing</p>
-      <p class="price">₹49</p>
+    <!-- COCONUT WATER -->
+    <div class="p-card">
+      <div class="p-img" style="background:#e0f8f0;">
+        <span class="p-badge green">🌴 Natural</span>
+        <img src="https://www.kauveryhospitalsbangalore.com/assets/uploads/blog/mobbannercoconut_682f25e75fe33_6835938fa201c.webp"
+             alt="Tender Coconut Water" style="object-fit:cover; padding:0;">
+      </div>
+      <div class="p-info">
+        <div class="p-name">Tender Coconut Water</div>
+        <div class="p-desc">Pure, hydrating & naturally refreshing</div>
+        <div class="p-foot">
+          <div>
+            <div class="p-price">₹49 <span class="p-unit">/250ml</span></div>
+            <div class="p-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<section id="contact" style="text-align:center; padding:30px;">
-  <h2>Contact Us</h2>
-  <p>Email: freshora@gmail.com</p>
-  <p>Phone: +91 9876543210</p>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2 class="contact-title">Let's Talk Fresh</h2>
+      <p class="contact-sub">Have questions about delivery, subscriptions, or products? We're just a message away — and we love hearing from our customers.</p>
+    </div>
+    <div class="c-items">
+      <div class="c-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <div class="c-label">Email Us</div>
+          <div class="c-val"><a href="mailto:saharsh2508@gmail.com">saharsh2508@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📞</div>
+        <div>
+          <div class="c-label">Call Us</div>
+          <div class="c-val"><a href="tel:+919772292121">+91 97722 92121</a></div>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🕗</div>
+        <div>
+          <div class="c-label">Available Hours</div>
+          <div class="c-val">8:00 AM – 9:00 PM, Daily</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  © 2026 Freshora | Fresh & Healthy Living
+  <div class="foot-brand">🌿 Freshora</div>
+  <div>© 2026 Freshora. Fresh & Healthy Living.</div>
+  <div class="foot-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#contact">Contact</a>
+  </div>
 </footer>
 
 </body>
